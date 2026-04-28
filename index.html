@@ -11,33 +11,726 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-    }
-
-    body {
-      background: #000;
       font-family: Arial, Helvetica, sans-serif;
     }
 
-    .website-image {
-      width: 100%;
-      height: auto;
-      display: block;
+    body {
+      background: #111;
+      color: #222;
     }
 
-    .page-wrapper {
-      max-width: 100%;
-      margin: 0 auto;
+    .top-banner {
+      background: linear-gradient(135deg, #050505, #1a1a1a);
+      color: white;
+      border-bottom: 4px solid #63c600;
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .brand-area {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .logo {
+      width: 105px;
+      height: 105px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #000;
+      border: 2px solid #63c600;
+      box-shadow: 0 0 18px rgba(99, 198, 0, 0.5);
+    }
+
+    .brand-text h1 {
+      font-size: 46px;
+      letter-spacing: 2px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .brand-text span {
+      color: #63c600;
+      font-style: italic;
+      font-size: 26px;
+      font-weight: 800;
+    }
+
+    .title-area {
+      border-left: 2px solid #555;
+      padding-left: 28px;
+    }
+
+    .title-area h2 {
+      font-size: 34px;
+      color: #63c600;
+      letter-spacing: 1px;
+    }
+
+    .title-area h2 span {
+      color: white;
+    }
+
+    .title-area p {
+      color: #ddd;
+      font-size: 16px;
+      margin-top: 4px;
+    }
+
+    .page {
+      max-width: 1260px;
+      margin: 24px auto;
+      padding: 0 20px;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .icon {
+      color: #63c600;
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    .section-title h3 {
+      color: #54b600;
+      font-size: 24px;
+      text-transform: uppercase;
+    }
+
+    .section-title p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .input-row {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .small-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      background: #f3f3f3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    .input-group {
+      display: flex;
+    }
+
+    input,
+    select {
+      width: 100%;
+      height: 42px;
+      padding: 10px 12px;
+      border: 1px solid #d8d8d8;
+      border-radius: 6px 0 0 6px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    select {
+      border-radius: 6px;
+      background: white;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #63c600;
+      box-shadow: 0 0 0 3px rgba(99, 198, 0, 0.15);
+    }
+
+    .unit {
+      width: 60px;
+      height: 42px;
+      background: #f4f4f4;
+      border: 1px solid #d8d8d8;
+      border-left: none;
+      border-radius: 0 6px 6px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555;
+      font-weight: 700;
+    }
+
+    .calculate-btn {
+      width: 100%;
+      margin-top: 18px;
+      padding: 16px;
+      border: none;
+      border-radius: 7px;
+      background: linear-gradient(135deg, #70d400, #4eb000);
+      color: #111;
+      font-size: 18px;
+      font-weight: 900;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    .calculate-btn:hover {
+      background: linear-gradient(135deg, #7eee00, #58c300);
+    }
+
+    .result-card {
+      border-radius: 8px;
+      padding: 28px;
+      margin-bottom: 28px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .left-result {
+      background: #f5fff0;
+      border: 1px solid #bee7a6;
+    }
+
+    .right-result {
+      background: #f2f8ff;
+      border: 1px solid #b7d8ff;
+    }
+
+    .result-label h4 {
+      font-size: 22px;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+
+    .left-result h4 {
+      color: #54b600;
+    }
+
+    .right-result h4 {
+      color: #1976d2;
+    }
+
+    .result-label p {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .result-number {
+      font-size: 58px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .left-result .result-number {
+      color: #54b600;
+    }
+
+    .right-result .result-number {
+      color: #1976d2;
+    }
+
+    .mm {
+      font-size: 28px;
+      color: #777;
+      margin-left: 5px;
+    }
+
+    .note-box {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 18px;
+      background: #fafafa;
+      margin-top: 12px;
+      color: #555;
+    }
+
+    .note-box strong {
+      color: #54b600;
+      font-size: 18px;
+    }
+
+    .reset-btn {
+      display: block;
+      margin: 24px auto 0;
+      padding: 12px 36px;
+      border: 2px solid #63c600;
+      background: white;
+      color: #54b600;
+      font-weight: 900;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .measure-section {
+      background: white;
+      border-radius: 10px;
+      margin-top: 22px;
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    }
+
+    .measure-title {
+      text-align: center;
+      font-size: 25px;
+      font-weight: 900;
+      margin-bottom: 22px;
+      text-transform: uppercase;
+    }
+
+    .measure-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+    }
+
+    .measure-item {
+      border: 1px solid #e2e2e2;
+      border-radius: 8px;
+      padding: 16px;
+      background: #fff;
+    }
+
+    .measure-image {
+      height: 85px;
+      background: #f6f6f6;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+
+    .measure-item h4 {
+      color: #54b600;
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .measure-item p {
+      color: #444;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    footer {
+      margin-top: 22px;
+      background: linear-gradient(135deg, #050505, #1a1a1a);
+      color: white;
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      border-top: 1px solid #333;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer-brand img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .footer-brand h3 {
+      color: #63c600;
+      font-size: 22px;
+    }
+
+    .footer-features {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .feature strong {
+      color: #63c600;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .warning {
+      display: none;
+      color: #b91c1c;
+      font-weight: 700;
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .main-grid,
+      .measure-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .brand-text h1 {
+        font-size: 34px;
+      }
+
+      .title-area {
+        border-left: none;
+        padding-left: 0;
+      }
+
+      .title-area h2 {
+        font-size: 26px;
+      }
+
+      .result-number {
+        font-size: 42px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="page-wrapper">
-    <img
-      src="website.png"
-      alt="Newson Sportec Spoke Length Calculator Website"
-      class="website-image"
-    />
-  </div>
+  <header class="top-banner">
+    <div class="brand-area">
+      <img src="logo.png" alt="Newson Sportec Logo" class="logo" />
+      <div class="brand-text">
+        <h1>NEWSON</h1>
+        <span>SPORTEC</span>
+      </div>
+    </div>
+
+    <div class="title-area">
+      <h2>SPOKE LENGTH <span>CALCULATOR</span></h2>
+      <p>Calculate accurate spoke lengths for your bicycle wheels</p>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="main-grid">
+      <div class="card">
+        <div class="section-title">
+          <div class="icon">☰</div>
+          <div>
+            <h3>Input Parameters</h3>
+            <p>Enter your wheel and hub measurements</p>
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="small-icon">⭕</div>
+          <div>
+            <label for="erd">Effective Rim Diameter (ERD)</label>
+            <div class="input-group">
+              <input id="erd" type="number" value="622" step="0.1" />
+              <div class="unit">mm</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="small-icon">⚙️</div>
+          <div>
+            <label for="flangeDiameter">Hub Flange Diameter</label>
+            <div class="input-group">
+              <input id="flangeDiameter" type="number" value="58" step="0.1" />
+              <div class="unit">mm</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="small-icon">↔️</div>
+          <div>
+            <label for="leftCenter">Center to Left Flange</label>
+            <div class="input-group">
+              <input id="leftCenter" type="number" value="34" step="0.1" />
+              <div class="unit">mm</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="small-icon">↔️</div>
+          <div>
+            <label for="rightCenter">Center to Right Flange</label>
+            <div class="input-group">
+              <input id="rightCenter" type="number" value="36" step="0.1" />
+              <div class="unit">mm</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="small-icon">☸️</div>
+          <div>
+            <label for="spokes">Number of Spokes</label>
+            <select id="spokes">
+              <option value="20">20</option>
+              <option value="24">24</option>
+              <option value="28">28</option>
+              <option value="32" selected>32</option>
+              <option value="36">36</option>
+              <option value="40">40</option>
+              <option value="48">48</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="small-icon">✕</div>
+          <div>
+            <label for="crosses">Cross Pattern</label>
+            <select id="crosses">
+              <option value="0">Radial / 0 Cross</option>
+              <option value="1">1 Cross</option>
+              <option value="2">2 Cross</option>
+              <option value="3" selected>3 Cross</option>
+              <option value="4">4 Cross</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="small-icon">🔘</div>
+          <div>
+            <label for="spokeHole">Spoke Hole Diameter Optional</label>
+            <div class="input-group">
+              <input id="spokeHole" type="number" value="2.0" step="0.1" />
+              <div class="unit">mm</div>
+            </div>
+          </div>
+        </div>
+
+        <button class="calculate-btn" onclick="calculateSpokeLength()">▣ Calculate</button>
+        <p id="warning" class="warning">Please enter valid numbers for all fields.</p>
+      </div>
+
+      <div class="card">
+        <div class="section-title">
+          <div class="icon">▣</div>
+          <div>
+            <h3>Spoke Length Results</h3>
+            <p>Calculated spoke lengths in millimeters</p>
+          </div>
+        </div>
+
+        <div class="result-card left-result">
+          <div class="result-label">
+            <h4>Left Side</h4>
+            <p>Spoke Length</p>
+          </div>
+          <div>
+            <span id="leftResult" class="result-number">—</span>
+            <span class="mm">mm</span>
+          </div>
+        </div>
+
+        <div class="result-card right-result">
+          <div class="result-label">
+            <h4>Right Side</h4>
+            <p>Spoke Length</p>
+          </div>
+          <div>
+            <span id="rightResult" class="result-number">—</span>
+            <span class="mm">mm</span>
+          </div>
+        </div>
+
+        <div class="note-box">
+          <strong>💡 Note</strong>
+          <p>Ensure all measurements are accurate for the best results.</p>
+          <p>Small measurement errors can affect spoke length.</p>
+        </div>
+
+        <button class="reset-btn" onclick="resetAll()">↻ RESET ALL</button>
+      </div>
+    </section>
+
+    <section class="measure-section">
+      <div class="measure-title">How to Measure</div>
+
+      <div class="measure-grid">
+        <div class="measure-item">
+          <div class="measure-image">⭕</div>
+          <h4>1. ERD Effective Rim Diameter</h4>
+          <p>Measure the internal diameter of the rim from nipple bed to nipple bed.</p>
+        </div>
+
+        <div class="measure-item">
+          <div class="measure-image">⚙️</div>
+          <h4>2. Hub Flange Diameter</h4>
+          <p>Measure the diameter of the hub flange where the spokes are attached.</p>
+        </div>
+
+        <div class="measure-item">
+          <div class="measure-image">↔️</div>
+          <h4>3. Center to Left Flange</h4>
+          <p>Measure from the centerline of the hub to the left flange.</p>
+        </div>
+
+        <div class="measure-item">
+          <div class="measure-image">↔️</div>
+          <h4>4. Center to Right Flange</h4>
+          <p>Measure from the centerline of the hub to the right flange.</p>
+        </div>
+
+        <div class="measure-item">
+          <div class="measure-image">🔘</div>
+          <h4>5. Spoke Hole Diameter</h4>
+          <p>Measure the diameter of the spoke hole in the rim if known.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">
+      <img src="logo.png" alt="Newson Sportec Logo" />
+      <div>
+        <h3>NEWSON SPORTEC</h3>
+        <p>Precision. Performance. Perfection.</p>
+        <p>www.newsonsportec.com</p>
+      </div>
+    </div>
+
+    <div class="footer-features">
+      <div class="feature">
+        <strong>ACCURATE</strong>
+        <p>Precise calculations</p>
+      </div>
+
+      <div class="feature">
+        <strong>RELIABLE</strong>
+        <p>Trusted by riders</p>
+      </div>
+
+      <div class="feature">
+        <strong>PERFORMANCE</strong>
+        <p>Built for speed</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function calculateSide(erd, flangeDiameter, centerToFlange, totalSpokes, crosses, spokeHole) {
+      const rimRadius = erd / 2;
+      const flangeRadius = flangeDiameter / 2;
+      const spokesPerSide = totalSpokes / 2;
+
+      const angle = (2 * Math.PI * crosses) / spokesPerSide;
+
+      const length = Math.sqrt(
+        Math.pow(rimRadius, 2) +
+        Math.pow(flangeRadius, 2) +
+        Math.pow(centerToFlange, 2) -
+        2 * rimRadius * flangeRadius * Math.cos(angle)
+      );
+
+      const adjustedLength = length - spokeHole / 2;
+      return adjustedLength;
+    }
+
+    function calculateSpokeLength() {
+      const erd = parseFloat(document.getElementById("erd").value);
+      const flangeDiameter = parseFloat(document.getElementById("flangeDiameter").value);
+      const leftCenter = parseFloat(document.getElementById("leftCenter").value);
+      const rightCenter = parseFloat(document.getElementById("rightCenter").value);
+      const totalSpokes = parseFloat(document.getElementById("spokes").value);
+      const crosses = parseFloat(document.getElementById("crosses").value);
+      const spokeHole = parseFloat(document.getElementById("spokeHole").value);
+      const warning = document.getElementById("warning");
+
+      const values = [
+        erd,
+        flangeDiameter,
+        leftCenter,
+        rightCenter,
+        totalSpokes,
+        crosses,
+        spokeHole
+      ];
+
+      const invalid = values.some(value => isNaN(value) || value < 0) || totalSpokes <= 0;
+
+      if (invalid) {
+        warning.style.display = "block";
+        document.getElementById("leftResult").textContent = "—";
+        document.getElementById("rightResult").textContent = "—";
+        return;
+      }
+
+      warning.style.display = "none";
+
+      const leftLength = calculateSide(
+        erd,
+        flangeDiameter,
+        leftCenter,
+        totalSpokes,
+        crosses,
+        spokeHole
+      );
+
+      const rightLength = calculateSide(
+        erd,
+        flangeDiameter,
+        rightCenter,
+        totalSpokes,
+        crosses,
+        spokeHole
+      );
+
+      document.getElementById("leftResult").textContent = leftLength.toFixed(1);
+      document.getElementById("rightResult").textContent = rightLength.toFixed(1);
+    }
+
+    function resetAll() {
+      document.getElementById("erd").value = 622;
+      document.getElementById("flangeDiameter").value = 58;
+      document.getElementById("leftCenter").value = 34;
+      document.getElementById("rightCenter").value = 36;
+      document.getElementById("spokes").value = 32;
+      document.getElementById("crosses").value = 3;
+      document.getElementById("spokeHole").value = 2.0;
+
+      calculateSpokeLength();
+    }
+
+    calculateSpokeLength();
+  </script>
 </body>
 </html>
