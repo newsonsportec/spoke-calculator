@@ -125,6 +125,18 @@
       color: #63c600;
       font-size: 32px;
       font-weight: bold;
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .title-icon-img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      display: block;
     }
 
     .section-title h3 {
@@ -634,7 +646,10 @@
 
       <div class="card">
         <div class="section-title">
-          <div class="icon">▣</div>
+          <div class="icon">
+            <img src="calculator-icon.png" alt="Calculator icon" class="title-icon-img" />
+          </div>
+
           <div>
             <h3>Spoke Length Results</h3>
             <p>Calculated spoke lengths in millimeters</p>
