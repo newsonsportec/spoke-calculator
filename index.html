@@ -23,7 +23,7 @@
       background: linear-gradient(135deg, #050505, #1a1a1a);
       color: white;
       border-bottom: 4px solid #63c600;
-      padding: 24px 32px;
+      padding: 20px 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -37,28 +37,43 @@
       gap: 18px;
     }
 
-    .logo {
-      width: 105px;
-      height: 105px;
+    /* This frame hides the white area around the logo */
+    .logo-frame {
+      width: 125px;
+      height: 125px;
       border-radius: 50%;
-      object-fit: cover;
-      background: #000;
+      overflow: hidden;
+      background: #050505;
       border: 2px solid #63c600;
-      box-shadow: 0 0 18px rgba(99, 198, 0, 0.5);
+      box-shadow: 0 0 22px rgba(99, 198, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* This makes the logo bigger so the white area is cropped out */
+    .logo {
+      width: 165px;
+      height: 165px;
+      object-fit: cover;
+      display: block;
+      transform: translate(-1px, -1px) scale(1.18);
     }
 
     .brand-text h1 {
-      font-size: 46px;
+      font-size: 52px;
       letter-spacing: 2px;
       font-weight: 900;
       line-height: 1;
+      color: white;
     }
 
     .brand-text span {
       color: #63c600;
       font-style: italic;
-      font-size: 26px;
-      font-weight: 800;
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: 2px;
     }
 
     .title-area {
@@ -379,11 +394,23 @@
       gap: 16px;
     }
 
-    .footer-brand img {
-      width: 80px;
-      height: 80px;
+    .footer-logo-frame {
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
+      overflow: hidden;
+      background: #050505;
+      border: 2px solid #63c600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-logo-frame img {
+      width: 120px;
+      height: 120px;
       object-fit: cover;
+      transform: scale(1.18);
     }
 
     .footer-brand h3 {
@@ -412,22 +439,49 @@
     }
 
     @media (max-width: 900px) {
-      .main-grid,
-      .measure-grid {
-        grid-template-columns: 1fr;
+      .top-banner {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .brand-area {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .logo-frame {
+        width: 110px;
+        height: 110px;
+      }
+
+      .logo {
+        width: 145px;
+        height: 145px;
       }
 
       .brand-text h1 {
-        font-size: 34px;
+        font-size: 38px;
+      }
+
+      .brand-text span {
+        font-size: 24px;
       }
 
       .title-area {
         border-left: none;
+        border-top: 1px solid #333;
         padding-left: 0;
+        padding-top: 18px;
+        width: 100%;
       }
 
       .title-area h2 {
         font-size: 26px;
+      }
+
+      .main-grid,
+      .measure-grid {
+        grid-template-columns: 1fr;
       }
 
       .result-card {
@@ -445,7 +499,9 @@
 <body>
   <header class="top-banner">
     <div class="brand-area">
-      <img src="logo.png" alt="Newson Sportec Logo" class="logo" />
+      <div class="logo-frame">
+        <img src="logo.png" alt="Newson Sportec Logo" class="logo" />
+      </div>
 
       <div class="brand-text">
         <h1>NEWSON</h1>
@@ -668,7 +724,9 @@
 
   <footer>
     <div class="footer-brand">
-      <img src="logo.png" alt="Newson Sportec Logo" />
+      <div class="footer-logo-frame">
+        <img src="logo.png" alt="Newson Sportec Logo" />
+      </div>
 
       <div>
         <h3>NEWSON SPORTEC</h3>
