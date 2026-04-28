@@ -533,7 +533,7 @@
           <div>
             <label for="erd">Effective Rim Diameter (ERD)</label>
             <div class="input-group">
-              <input id="erd" type="number" value="622" step="0.1" />
+              <input id="erd" type="number" value="0" step="0.1" />
               <div class="unit">mm</div>
             </div>
           </div>
@@ -547,7 +547,7 @@
           <div>
             <label for="flangeDiameter">Hub Flange Diameter</label>
             <div class="input-group">
-              <input id="flangeDiameter" type="number" value="58" step="0.1" />
+              <input id="flangeDiameter" type="number" value="0" step="0.1" />
               <div class="unit">mm</div>
             </div>
           </div>
@@ -561,7 +561,7 @@
           <div>
             <label for="leftCenter">Center to Left Flange</label>
             <div class="input-group">
-              <input id="leftCenter" type="number" value="34" step="0.1" />
+              <input id="leftCenter" type="number" value="0" step="0.1" />
               <div class="unit">mm</div>
             </div>
           </div>
@@ -575,7 +575,7 @@
           <div>
             <label for="rightCenter">Center to Right Flange</label>
             <div class="input-group">
-              <input id="rightCenter" type="number" value="36" step="0.1" />
+              <input id="rightCenter" type="number" value="0" step="0.1" />
               <div class="unit">mm</div>
             </div>
           </div>
@@ -589,11 +589,11 @@
           <div>
             <label for="spokes">Number of Spokes</label>
             <select id="spokes">
-              <option value="0">0</option>
+              <option value="0" selected>0</option>
               <option value="20">20</option>
               <option value="24">24</option>
               <option value="28">28</option>
-              <option value="32" selected>32</option>
+              <option value="32">32</option>
               <option value="36">36</option>
               <option value="40">40</option>
               <option value="48">48</option>
@@ -607,10 +607,10 @@
           <div>
             <label for="crosses">Cross Pattern</label>
             <select id="crosses">
-              <option value="0">Radial / 0 Cross</option>
+              <option value="0" selected>0 / Radial</option>
               <option value="1">1 Cross</option>
               <option value="2">2 Cross</option>
-              <option value="3" selected>3 Cross</option>
+              <option value="3">3 Cross</option>
               <option value="4">4 Cross</option>
             </select>
           </div>
@@ -622,14 +622,14 @@
           <div>
             <label for="spokeHole">Spoke Hole Diameter Optional</label>
             <div class="input-group">
-              <input id="spokeHole" type="number" value="2.0" step="0.1" />
+              <input id="spokeHole" type="number" value="0" step="0.1" />
               <div class="unit">mm</div>
             </div>
           </div>
         </div>
 
         <button class="calculate-btn" onclick="calculateSpokeLength()">▣ Calculate</button>
-        <p id="warning" class="warning">Please enter valid numbers greater than 0 for the required fields.</p>
+        <p id="warning" class="warning">Please enter valid numbers. ERD, flange diameter, and number of spokes must be greater than 0.</p>
       </div>
 
       <div class="card">
@@ -648,7 +648,7 @@
           </div>
 
           <div>
-            <span id="leftResult" class="result-number">—</span>
+            <span id="leftResult" class="result-number">0.0</span>
             <span class="mm">mm</span>
           </div>
         </div>
@@ -660,14 +660,14 @@
           </div>
 
           <div>
-            <span id="rightResult" class="result-number">—</span>
+            <span id="rightResult" class="result-number">0.0</span>
             <span class="mm">mm</span>
           </div>
         </div>
 
         <div class="note-box">
           <strong>💡 Note</strong>
-          <p>Ensure all measurements are accurate for the best results.</p>
+          <p>Please enter your own wheel and hub measurements before calculating.</p>
           <p>Small measurement errors can affect spoke length.</p>
         </div>
 
@@ -800,8 +800,8 @@
 
       if (invalid) {
         warning.style.display = "block";
-        document.getElementById("leftResult").textContent = "—";
-        document.getElementById("rightResult").textContent = "—";
+        document.getElementById("leftResult").textContent = "0.0";
+        document.getElementById("rightResult").textContent = "0.0";
         return;
       }
 
@@ -838,12 +838,12 @@
       document.getElementById("crosses").value = 0;
       document.getElementById("spokeHole").value = 0;
 
-      document.getElementById("leftResult").textContent = "—";
-      document.getElementById("rightResult").textContent = "—";
+      document.getElementById("leftResult").textContent = "0.0";
+      document.getElementById("rightResult").textContent = "0.0";
       document.getElementById("warning").style.display = "none";
     }
 
-    calculateSpokeLength();
+    resetAll();
   </script>
 </body>
 </html>
