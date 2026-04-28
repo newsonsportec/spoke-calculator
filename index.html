@@ -38,22 +38,16 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
     }
 
-    .logo {
-      width: 64px;
-      height: 64px;
+    .logo-img {
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
+      object-fit: cover;
       background: white;
-      color: #2563eb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 24px;
-      letter-spacing: 1px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.28);
     }
 
     .brand h1 {
@@ -68,7 +62,7 @@
 
     .hero {
       max-width: 1100px;
-      margin: 34px auto;
+      margin: 34px auto 40px;
       padding: 0 20px;
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
@@ -83,8 +77,7 @@
     }
 
     .intro h2,
-    .calculator h2,
-    .explanation h2 {
+    .calculator h2 {
       color: #0f172a;
       margin-bottom: 14px;
       font-size: 26px;
@@ -186,27 +179,6 @@
       display: none;
     }
 
-    .explanation {
-      max-width: 1100px;
-      margin: 0 auto 40px;
-      padding: 0 20px;
-    }
-
-    .formula {
-      background: #0f172a;
-      color: white;
-      padding: 18px;
-      border-radius: 14px;
-      margin: 18px 0;
-      overflow-x: auto;
-      font-size: 18px;
-    }
-
-    ul {
-      margin-left: 20px;
-      margin-top: 12px;
-    }
-
     footer {
       text-align: center;
       padding: 24px 20px;
@@ -228,6 +200,11 @@
       .brand h1 {
         font-size: 24px;
       }
+
+      .logo-img {
+        width: 76px;
+        height: 76px;
+      }
     }
   </style>
 </head>
@@ -236,9 +213,8 @@
   <header>
     <div class="header-inner">
       <div class="brand">
-        <!-- Replace this placeholder with your real logo image if available.
-             Example: <img src="logo.png" alt="Newson Sportec Logo" class="logo-img"> -->
-        <div class="logo">NS</div>
+        <img src="logo.png" alt="Newson Sportec Logo" class="logo-img" />
+
         <div>
           <h1>Newson Sportec</h1>
           <p>Bicycle Wheel Spoke Length Calculator</p>
@@ -251,14 +227,17 @@
     <section class="hero">
       <div class="card intro">
         <h2>How to Calculate Bicycle Spoke Length</h2>
+
         <p>
           This simple calculator helps wheel builders estimate the correct spoke length
           for the left and right sides of a bicycle wheel.
         </p>
+
         <p>
           Enter the rim ERD, hub flange measurements, spoke count, and cross pattern.
           The calculator will automatically show the estimated spoke length in millimeters.
         </p>
+
         <div class="note">
           Tip: Rear wheels often have different left and right spoke lengths because the hub flange distances are different.
         </div>
@@ -334,30 +313,6 @@
         <p id="warning" class="warning">Please enter valid numbers for all fields.</p>
       </div>
     </section>
-
-    <section class="explanation">
-      <div class="card">
-        <h2>Formula Explanation</h2>
-        <p>The calculator uses a common spoke length formula:</p>
-
-        <div class="formula">
-          L = √(R² + r² + d² − 2Rr × cos θ) − spoke hole adjustment
-        </div>
-
-        <ul>
-          <li><strong>L</strong> = spoke length</li>
-          <li><strong>R</strong> = rim radius, calculated as ERD ÷ 2</li>
-          <li><strong>r</strong> = hub flange radius, calculated as flange diameter ÷ 2</li>
-          <li><strong>d</strong> = center-to-flange distance</li>
-          <li><strong>θ</strong> = spoke angle based on spoke count and cross pattern</li>
-        </ul>
-
-        <p style="margin-top: 14px;">
-          This calculator gives an estimated spoke length. For production or professional wheel building,
-          always confirm measurements with the rim and hub manufacturer specifications.
-        </p>
-      </div>
-    </section>
   </main>
 
   <footer>
@@ -370,8 +325,6 @@
       const flangeRadius = flangeDiameter / 2;
       const spokesPerSide = totalSpokes / 2;
 
-      // Angle between rim hole and hub flange hole.
-      // This is a practical approximation for common crossed bicycle wheels.
       const angle = (2 * Math.PI * crosses) / spokesPerSide;
 
       const length = Math.sqrt(
@@ -381,7 +334,6 @@
         2 * rimRadius * flangeRadius * Math.cos(angle)
       );
 
-      // Small adjustment for spoke hole diameter.
       const adjustedLength = length - (spokeHole / 2);
       return adjustedLength;
     }
@@ -445,6 +397,3 @@
   </script>
 </body>
 </html>
- 
-
-      
