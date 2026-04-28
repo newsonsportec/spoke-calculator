@@ -19,18 +19,67 @@
       color: #222;
     }
 
-    .header-image-wrap {
-      width: 100%;
-      background: #000;
+    .top-banner {
+      background: linear-gradient(135deg, #050505, #1a1a1a);
+      color: white;
       border-bottom: 4px solid #63c600;
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
     }
 
-    .header-image {
-      width: 100%;
-      display: block;
-      max-width: 1600px;
-      margin: 0 auto;
-      height: auto;
+    .brand-area {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .logo {
+      width: 105px;
+      height: 105px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #000;
+      border: 2px solid #63c600;
+      box-shadow: 0 0 18px rgba(99, 198, 0, 0.5);
+    }
+
+    .brand-text h1 {
+      font-size: 46px;
+      letter-spacing: 2px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .brand-text span {
+      color: #63c600;
+      font-style: italic;
+      font-size: 26px;
+      font-weight: 800;
+    }
+
+    .title-area {
+      border-left: 2px solid #555;
+      padding-left: 28px;
+    }
+
+    .title-area h2 {
+      font-size: 34px;
+      color: #63c600;
+      letter-spacing: 1px;
+    }
+
+    .title-area h2 span {
+      color: white;
+    }
+
+    .title-area p {
+      color: #ddd;
+      font-size: 16px;
+      margin-top: 4px;
     }
 
     .page {
@@ -368,6 +417,19 @@
         grid-template-columns: 1fr;
       }
 
+      .brand-text h1 {
+        font-size: 34px;
+      }
+
+      .title-area {
+        border-left: none;
+        padding-left: 0;
+      }
+
+      .title-area h2 {
+        font-size: 26px;
+      }
+
       .result-card {
         grid-template-columns: 1fr;
         text-align: center;
@@ -381,8 +443,20 @@
 </head>
 
 <body>
-  <header class="header-image-wrap">
-    <img src="header-banner.png" alt="Newson Sportec Header Banner" class="header-image" />
+  <header class="top-banner">
+    <div class="brand-area">
+      <img src="logo.png" alt="Newson Sportec Logo" class="logo" />
+
+      <div class="brand-text">
+        <h1>NEWSON</h1>
+        <span>SPORTEC</span>
+      </div>
+    </div>
+
+    <div class="title-area">
+      <h2>SPOKE LENGTH <span>CALCULATOR</span></h2>
+      <p>Calculate accurate spoke lengths for your bicycle wheels</p>
+    </div>
   </header>
 
   <main class="page">
@@ -400,6 +474,7 @@
           <div class="small-icon">
             <img src="erd-icon.png" alt="ERD icon" class="small-icon-img" />
           </div>
+
           <div>
             <label for="erd">Effective Rim Diameter (ERD)</label>
             <div class="input-group">
@@ -413,6 +488,7 @@
           <div class="small-icon">
             <img src="flange-icon.png" alt="Hub flange icon" class="small-icon-img" />
           </div>
+
           <div>
             <label for="flangeDiameter">Hub Flange Diameter</label>
             <div class="input-group">
@@ -426,6 +502,7 @@
           <div class="small-icon">
             <img src="left-flange-icon.png" alt="Center to left flange icon" class="small-icon-img" />
           </div>
+
           <div>
             <label for="leftCenter">Center to Left Flange</label>
             <div class="input-group">
@@ -439,6 +516,7 @@
           <div class="small-icon">
             <img src="right-flange-icon.png" alt="Center to right flange icon" class="small-icon-img" />
           </div>
+
           <div>
             <label for="rightCenter">Center to Right Flange</label>
             <div class="input-group">
@@ -452,6 +530,7 @@
           <div class="small-icon">
             <img src="spokes-icon.png" alt="Number of spokes icon" class="small-icon-img" />
           </div>
+
           <div>
             <label for="spokes">Number of Spokes</label>
             <select id="spokes">
@@ -468,6 +547,7 @@
 
         <div class="input-row">
           <div class="small-icon">✕</div>
+
           <div>
             <label for="crosses">Cross Pattern</label>
             <select id="crosses">
@@ -482,6 +562,7 @@
 
         <div class="input-row">
           <div class="small-icon">🔘</div>
+
           <div>
             <label for="spokeHole">Spoke Hole Diameter Optional</label>
             <div class="input-group">
@@ -509,6 +590,7 @@
             <h4>Left Side</h4>
             <p>Spoke Length</p>
           </div>
+
           <div>
             <span id="leftResult" class="result-number">—</span>
             <span class="mm">mm</span>
@@ -520,6 +602,7 @@
             <h4>Right Side</h4>
             <p>Spoke Length</p>
           </div>
+
           <div>
             <span id="rightResult" class="result-number">—</span>
             <span class="mm">mm</span>
@@ -586,6 +669,7 @@
   <footer>
     <div class="footer-brand">
       <img src="logo.png" alt="Newson Sportec Logo" />
+
       <div>
         <h3>NEWSON SPORTEC</h3>
         <p>Precision. Performance. Perfection.</p>
@@ -626,7 +710,8 @@
         2 * rimRadius * flangeRadius * Math.cos(angle)
       );
 
-      return length - (spokeHole / 2);
+      const adjustedLength = length - spokeHole / 2;
+      return adjustedLength;
     }
 
     function calculateSpokeLength() {
@@ -639,7 +724,16 @@
       const spokeHole = parseFloat(document.getElementById("spokeHole").value);
       const warning = document.getElementById("warning");
 
-      const values = [erd, flangeDiameter, leftCenter, rightCenter, totalSpokes, crosses, spokeHole];
+      const values = [
+        erd,
+        flangeDiameter,
+        leftCenter,
+        rightCenter,
+        totalSpokes,
+        crosses,
+        spokeHole
+      ];
+
       const invalid = values.some(value => isNaN(value) || value < 0) || totalSpokes <= 0;
 
       if (invalid) {
@@ -651,8 +745,23 @@
 
       warning.style.display = "none";
 
-      const leftLength = calculateSide(erd, flangeDiameter, leftCenter, totalSpokes, crosses, spokeHole);
-      const rightLength = calculateSide(erd, flangeDiameter, rightCenter, totalSpokes, crosses, spokeHole);
+      const leftLength = calculateSide(
+        erd,
+        flangeDiameter,
+        leftCenter,
+        totalSpokes,
+        crosses,
+        spokeHole
+      );
+
+      const rightLength = calculateSide(
+        erd,
+        flangeDiameter,
+        rightCenter,
+        totalSpokes,
+        crosses,
+        spokeHole
+      );
 
       document.getElementById("leftResult").textContent = leftLength.toFixed(1);
       document.getElementById("rightResult").textContent = rightLength.toFixed(1);
@@ -666,6 +775,7 @@
       document.getElementById("spokes").value = 32;
       document.getElementById("crosses").value = 3;
       document.getElementById("spokeHole").value = 2.0;
+
       calculateSpokeLength();
     }
 
