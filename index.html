@@ -37,7 +37,6 @@
       gap: 18px;
     }
 
-    /* Logo frame controls the visible circle size */
     .logo-frame {
       width: 118px;
       height: 118px;
@@ -51,7 +50,6 @@
       justify-content: center;
     }
 
-    /* Logo is only slightly enlarged to reduce the white area */
     .logo {
       width: 135px;
       height: 135px;
@@ -591,6 +589,7 @@
           <div>
             <label for="spokes">Number of Spokes</label>
             <select id="spokes">
+              <option value="0">0</option>
               <option value="20">20</option>
               <option value="24">24</option>
               <option value="28">28</option>
@@ -630,7 +629,7 @@
         </div>
 
         <button class="calculate-btn" onclick="calculateSpokeLength()">▣ Calculate</button>
-        <p id="warning" class="warning">Please enter valid numbers for all fields.</p>
+        <p id="warning" class="warning">Please enter valid numbers greater than 0 for the required fields.</p>
       </div>
 
       <div class="card">
@@ -793,7 +792,11 @@
         spokeHole
       ];
 
-      const invalid = values.some(value => isNaN(value) || value < 0) || totalSpokes <= 0;
+      const invalid =
+        values.some(value => isNaN(value) || value < 0) ||
+        erd <= 0 ||
+        flangeDiameter <= 0 ||
+        totalSpokes <= 0;
 
       if (invalid) {
         warning.style.display = "block";
@@ -827,15 +830,17 @@
     }
 
     function resetAll() {
-      document.getElementById("erd").value = 622;
-      document.getElementById("flangeDiameter").value = 58;
-      document.getElementById("leftCenter").value = 34;
-      document.getElementById("rightCenter").value = 36;
-      document.getElementById("spokes").value = 32;
-      document.getElementById("crosses").value = 3;
-      document.getElementById("spokeHole").value = 2.0;
+      document.getElementById("erd").value = 0;
+      document.getElementById("flangeDiameter").value = 0;
+      document.getElementById("leftCenter").value = 0;
+      document.getElementById("rightCenter").value = 0;
+      document.getElementById("spokes").value = 0;
+      document.getElementById("crosses").value = 0;
+      document.getElementById("spokeHole").value = 0;
 
-      calculateSpokeLength();
+      document.getElementById("leftResult").textContent = "—";
+      document.getElementById("rightResult").textContent = "—";
+      document.getElementById("warning").style.display = "none";
     }
 
     calculateSpokeLength();
