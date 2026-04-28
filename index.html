@@ -108,10 +108,10 @@
       margin-bottom: 22px;
     }
 
-    .icon {
-      color: #63c600;
-      font-size: 32px;
-      font-weight: bold;
+    .section-icon {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
     }
 
     .section-title h3 {
@@ -133,7 +133,7 @@
       margin-bottom: 15px;
     }
 
-    .small-icon {
+    .small-icon-box {
       width: 48px;
       height: 48px;
       border-radius: 8px;
@@ -141,7 +141,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
+      padding: 7px;
+    }
+
+    .small-icon-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
     }
 
     label {
@@ -165,11 +172,11 @@
       border-radius: 6px 0 0 6px;
       font-size: 16px;
       outline: none;
+      background: white;
     }
 
     select {
       border-radius: 6px;
-      background: white;
     }
 
     input:focus,
@@ -331,8 +338,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 42px;
+      padding: 12px;
       margin-bottom: 12px;
+    }
+
+    .measure-image img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
     }
 
     .measure-item h4 {
@@ -417,6 +430,10 @@
         font-size: 26px;
       }
 
+      .result-card {
+        grid-template-columns: 1fr;
+      }
+
       .result-number {
         font-size: 42px;
       }
@@ -444,7 +461,7 @@
     <section class="main-grid">
       <div class="card">
         <div class="section-title">
-          <div class="icon">☰</div>
+          <img src="spokes-icon.png" alt="Input icon" class="section-icon" />
           <div>
             <h3>Input Parameters</h3>
             <p>Enter your wheel and hub measurements</p>
@@ -452,7 +469,9 @@
         </div>
 
         <div class="input-row">
-          <div class="small-icon">⭕</div>
+          <div class="small-icon-box">
+            <img src="erd-icon.png" alt="ERD icon" class="small-icon-img" />
+          </div>
           <div>
             <label for="erd">Effective Rim Diameter (ERD)</label>
             <div class="input-group">
@@ -463,7 +482,9 @@
         </div>
 
         <div class="input-row">
-          <div class="small-icon">⚙️</div>
+          <div class="small-icon-box">
+            <img src="flange-icon.png" alt="Hub flange icon" class="small-icon-img" />
+          </div>
           <div>
             <label for="flangeDiameter">Hub Flange Diameter</label>
             <div class="input-group">
@@ -474,7 +495,9 @@
         </div>
 
         <div class="input-row">
-          <div class="small-icon">↔️</div>
+          <div class="small-icon-box">
+            <img src="left-flange-icon.png" alt="Left flange icon" class="small-icon-img" />
+          </div>
           <div>
             <label for="leftCenter">Center to Left Flange</label>
             <div class="input-group">
@@ -485,7 +508,9 @@
         </div>
 
         <div class="input-row">
-          <div class="small-icon">↔️</div>
+          <div class="small-icon-box">
+            <img src="right-flange-icon.png" alt="Right flange icon" class="small-icon-img" />
+          </div>
           <div>
             <label for="rightCenter">Center to Right Flange</label>
             <div class="input-group">
@@ -496,7 +521,9 @@
         </div>
 
         <div class="input-row">
-          <div class="small-icon">☸️</div>
+          <div class="small-icon-box">
+            <img src="spokes-icon.png" alt="Spokes icon" class="small-icon-img" />
+          </div>
           <div>
             <label for="spokes">Number of Spokes</label>
             <select id="spokes">
@@ -512,7 +539,9 @@
         </div>
 
         <div class="input-row">
-          <div class="small-icon">✕</div>
+          <div class="small-icon-box">
+            <img src="spokes-icon.png" alt="Cross pattern icon" class="small-icon-img" />
+          </div>
           <div>
             <label for="crosses">Cross Pattern</label>
             <select id="crosses">
@@ -526,7 +555,9 @@
         </div>
 
         <div class="input-row">
-          <div class="small-icon">🔘</div>
+          <div class="small-icon-box">
+            <img src="erd-icon.png" alt="Spoke hole icon" class="small-icon-img" />
+          </div>
           <div>
             <label for="spokeHole">Spoke Hole Diameter Optional</label>
             <div class="input-group">
@@ -542,7 +573,7 @@
 
       <div class="card">
         <div class="section-title">
-          <div class="icon">▣</div>
+          <img src="spokes-icon.png" alt="Results icon" class="section-icon" />
           <div>
             <h3>Spoke Length Results</h3>
             <p>Calculated spoke lengths in millimeters</p>
@@ -572,7 +603,7 @@
         </div>
 
         <div class="note-box">
-          <strong>💡 Note</strong>
+          <strong>Note</strong>
           <p>Ensure all measurements are accurate for the best results.</p>
           <p>Small measurement errors can affect spoke length.</p>
         </div>
@@ -586,33 +617,43 @@
 
       <div class="measure-grid">
         <div class="measure-item">
-          <div class="measure-image">⭕</div>
+          <div class="measure-image">
+            <img src="erd-icon.png" alt="ERD measurement icon" />
+          </div>
           <h4>1. ERD Effective Rim Diameter</h4>
           <p>Measure the internal diameter of the rim from nipple bed to nipple bed.</p>
         </div>
 
         <div class="measure-item">
-          <div class="measure-image">⚙️</div>
+          <div class="measure-image">
+            <img src="flange-icon.png" alt="Hub flange measurement icon" />
+          </div>
           <h4>2. Hub Flange Diameter</h4>
           <p>Measure the diameter of the hub flange where the spokes are attached.</p>
         </div>
 
         <div class="measure-item">
-          <div class="measure-image">↔️</div>
+          <div class="measure-image">
+            <img src="left-flange-icon.png" alt="Center to left flange measurement icon" />
+          </div>
           <h4>3. Center to Left Flange</h4>
           <p>Measure from the centerline of the hub to the left flange.</p>
         </div>
 
         <div class="measure-item">
-          <div class="measure-image">↔️</div>
+          <div class="measure-image">
+            <img src="right-flange-icon.png" alt="Center to right flange measurement icon" />
+          </div>
           <h4>4. Center to Right Flange</h4>
           <p>Measure from the centerline of the hub to the right flange.</p>
         </div>
 
         <div class="measure-item">
-          <div class="measure-image">🔘</div>
-          <h4>5. Spoke Hole Diameter</h4>
-          <p>Measure the diameter of the spoke hole in the rim if known.</p>
+          <div class="measure-image">
+            <img src="spokes-icon.png" alt="Spoke count measurement icon" />
+          </div>
+          <h4>5. Number of Spokes</h4>
+          <p>Select the total number of spokes on the wheel.</p>
         </div>
       </div>
     </section>
