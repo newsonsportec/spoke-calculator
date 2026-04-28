@@ -37,31 +37,31 @@
       gap: 18px;
     }
 
-    /* This frame hides the white area around the logo */
+    /* Logo frame controls the visible circle size */
     .logo-frame {
-      width: 125px;
-      height: 125px;
+      width: 118px;
+      height: 118px;
       border-radius: 50%;
       overflow: hidden;
       background: #050505;
       border: 2px solid #63c600;
-      box-shadow: 0 0 22px rgba(99, 198, 0, 0.7);
+      box-shadow: 0 0 18px rgba(99, 198, 0, 0.55);
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    /* This makes the logo bigger so the white area is cropped out */
+    /* Logo is only slightly enlarged to reduce the white area */
     .logo {
-      width: 165px;
-      height: 165px;
+      width: 135px;
+      height: 135px;
       object-fit: cover;
       display: block;
-      transform: translate(-1px, -1px) scale(1.18);
+      transform: scale(1.08);
     }
 
     .brand-text h1 {
-      font-size: 52px;
+      font-size: 50px;
       letter-spacing: 2px;
       font-weight: 900;
       line-height: 1;
@@ -71,7 +71,7 @@
     .brand-text span {
       color: #63c600;
       font-style: italic;
-      font-size: 30px;
+      font-size: 29px;
       font-weight: 900;
       letter-spacing: 2px;
     }
@@ -395,8 +395,8 @@
     }
 
     .footer-logo-frame {
-      width: 90px;
-      height: 90px;
+      width: 82px;
+      height: 82px;
       border-radius: 50%;
       overflow: hidden;
       background: #050505;
@@ -407,10 +407,10 @@
     }
 
     .footer-logo-frame img {
-      width: 120px;
-      height: 120px;
+      width: 96px;
+      height: 96px;
       object-fit: cover;
-      transform: scale(1.18);
+      transform: scale(1.06);
     }
 
     .footer-brand h3 {
@@ -450,13 +450,14 @@
       }
 
       .logo-frame {
-        width: 110px;
-        height: 110px;
+        width: 105px;
+        height: 105px;
       }
 
       .logo {
-        width: 145px;
-        height: 145px;
+        width: 120px;
+        height: 120px;
+        transform: scale(1.06);
       }
 
       .brand-text h1 {
