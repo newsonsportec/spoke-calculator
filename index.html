@@ -662,7 +662,9 @@
         </div>
 
         <div class="input-row">
-          <div class="small-icon">＋</div>
+          <div class="small-icon">
+            <img src="correction-icon.png" alt="Nipple ERD correction icon" class="small-icon-img" />
+          </div>
 
           <div>
             <label for="nippleCorrection">Nipple / ERD Correction</label>
@@ -763,9 +765,9 @@
 
         <div class="measure-item">
           <div class="measure-image">
-            <span style="font-size: 42px;">🔘</span>
+            <img src="correction-icon.png" alt="Correction measurement icon" />
           </div>
-          <h4>5. Correction Field</h4>
+          <h4>5. Nipple / ERD Correction</h4>
           <p>Use the correction field to match special rim, nipple, or manufacturer assumptions.</p>
         </div>
       </div>
@@ -817,11 +819,6 @@
       const flangeRadius = flangeDiameter / 2;
       const spokesPerSide = totalSpokes / 2;
 
-      /*
-        Standard crossed wheel geometry:
-        angle = 360 degrees * crosses / spokes per side
-        in radians = 2π * crosses / spokes per side
-      */
       const angle = (2 * Math.PI * crosses) / spokesPerSide;
 
       const rawLength = Math.sqrt(
@@ -831,12 +828,6 @@
         2 * rimRadius * flangeRadius * Math.cos(angle)
       );
 
-      /*
-        Hub spoke hole correction:
-        Many spoke calculators subtract about half the hub spoke hole diameter.
-        Nipple / ERD correction:
-        Use this field to fine-tune results when comparing with DT Swiss or rim manufacturer data.
-      */
       const adjustedLength = rawLength - (hubSpokeHole / 2) + nippleCorrection;
 
       return adjustedLength;
