@@ -19,22 +19,25 @@
       color: #222;
     }
 
+    /* HEADER UPDATED: better vertical centering and balanced left/right layout */
     .top-banner {
       background: linear-gradient(135deg, #050505, #1a1a1a);
       color: white;
       border-bottom: 4px solid #63c600;
+      min-height: 155px;
       padding: 20px 32px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 30px;
+      justify-content: center;
+      gap: 120px;
       flex-wrap: wrap;
     }
 
     .brand-area {
       display: flex;
       align-items: center;
-      gap: 18px;
+      justify-content: center;
+      gap: 20px;
     }
 
     .logo-frame {
@@ -48,6 +51,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
     }
 
     .logo {
@@ -58,12 +62,19 @@
       transform: scale(1.08);
     }
 
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      line-height: 1;
+    }
+
     .brand-text h1 {
       font-size: 50px;
       letter-spacing: 2px;
       font-weight: 900;
-      line-height: 1;
       color: white;
+      line-height: 1;
     }
 
     .brand-text span {
@@ -72,17 +83,24 @@
       font-size: 29px;
       font-weight: 900;
       letter-spacing: 2px;
+      margin-top: 6px;
+      line-height: 1;
     }
 
     .title-area {
       border-left: 2px solid #555;
-      padding-left: 28px;
+      padding-left: 30px;
+      min-height: 70px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .title-area h2 {
       font-size: 34px;
       color: #63c600;
       letter-spacing: 1px;
+      line-height: 1.1;
     }
 
     .title-area h2 span {
@@ -92,7 +110,7 @@
     .title-area p {
       color: #ddd;
       font-size: 16px;
-      margin-top: 4px;
+      margin-top: 6px;
     }
 
     .page {
@@ -455,10 +473,17 @@
       text-align: center;
     }
 
+    @media (max-width: 1100px) {
+      .top-banner {
+        gap: 50px;
+      }
+    }
+
     @media (max-width: 900px) {
       .top-banner {
         justify-content: center;
         text-align: center;
+        gap: 24px;
       }
 
       .brand-area {
@@ -491,6 +516,7 @@
         padding-left: 0;
         padding-top: 18px;
         width: 100%;
+        align-items: center;
       }
 
       .title-area h2 {
