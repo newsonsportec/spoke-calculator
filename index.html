@@ -245,8 +245,8 @@
 
     .result-card {
       border-radius: 8px;
-      padding: 28px;
-      margin-bottom: 28px;
+      padding: 24px;
+      margin-bottom: 24px;
       display: grid;
       grid-template-columns: 1fr auto;
       align-items: center;
@@ -283,7 +283,7 @@
     }
 
     .result-number {
-      font-size: 58px;
+      font-size: 56px;
       font-weight: 900;
       line-height: 1;
     }
@@ -297,9 +297,16 @@
     }
 
     .mm {
-      font-size: 28px;
+      font-size: 26px;
       color: #777;
       margin-left: 5px;
+    }
+
+    .recommended {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #555;
+      font-weight: 700;
     }
 
     .note-box {
@@ -553,13 +560,27 @@
 
         <div class="input-row">
           <div class="small-icon">
-            <img src="flange-icon.png" alt="Hub flange icon" class="small-icon-img" />
+            <img src="flange-icon.png" alt="Left flange icon" class="small-icon-img" />
           </div>
 
           <div>
-            <label for="flangeDiameter">Hub Flange Diameter</label>
+            <label for="leftFlangeDiameter">Left Hub Flange Diameter</label>
             <div class="input-group">
-              <input id="flangeDiameter" type="number" value="0" step="0.1" />
+              <input id="leftFlangeDiameter" type="number" value="0" step="0.1" />
+              <div class="unit">mm</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="small-icon">
+            <img src="flange-icon.png" alt="Right flange icon" class="small-icon-img" />
+          </div>
+
+          <div>
+            <label for="rightFlangeDiameter">Right Hub Flange Diameter</label>
+            <div class="input-group">
+              <input id="rightFlangeDiameter" type="number" value="0" step="0.1" />
               <div class="unit">mm</div>
             </div>
           </div>
@@ -632,16 +653,28 @@
           <div class="small-icon">🔘</div>
 
           <div>
-            <label for="spokeHole">Spoke Hole Diameter Optional</label>
+            <label for="hubSpokeHole">Hub Spoke Hole Diameter</label>
             <div class="input-group">
-              <input id="spokeHole" type="number" value="0" step="0.1" />
+              <input id="hubSpokeHole" type="number" value="0" step="0.1" />
+              <div class="unit">mm</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="small-icon">＋</div>
+
+          <div>
+            <label for="nippleCorrection">Nipple / ERD Correction</label>
+            <div class="input-group">
+              <input id="nippleCorrection" type="number" value="0" step="0.1" />
               <div class="unit">mm</div>
             </div>
           </div>
         </div>
 
         <button class="calculate-btn" onclick="calculateSpokeLength()">▣ Calculate</button>
-        <p id="warning" class="warning">Please enter valid numbers. ERD, flange diameter, and number of spokes must be greater than 0.</p>
+        <p id="warning" class="warning">Please enter valid numbers. ERD, flange diameters, and number of spokes must be greater than 0.</p>
       </div>
 
       <div class="card">
@@ -659,7 +692,8 @@
         <div class="result-card left-result">
           <div class="result-label">
             <h4>Left Side</h4>
-            <p>Spoke Length</p>
+            <p>Exact Spoke Length</p>
+            <div class="recommended">Recommended: <span id="leftRecommended">0</span> mm</div>
           </div>
 
           <div>
@@ -671,7 +705,8 @@
         <div class="result-card right-result">
           <div class="result-label">
             <h4>Right Side</h4>
-            <p>Spoke Length</p>
+            <p>Exact Spoke Length</p>
+            <div class="recommended">Recommended: <span id="rightRecommended">0</span> mm</div>
           </div>
 
           <div>
@@ -682,8 +717,8 @@
 
         <div class="note-box">
           <strong>💡 Note</strong>
-          <p>Please enter your own wheel and hub measurements before calculating.</p>
-          <p>Small measurement errors can affect spoke length.</p>
+          <p>This calculator uses a standard spoke-length geometry formula with left/right flange dimensions.</p>
+          <p>Compare results with DT Swiss, then adjust the correction field if your rim/nipple system needs compensation.</p>
         </div>
 
         <button class="reset-btn" onclick="resetAll()">↻ RESET ALL</button>
@@ -699,7 +734,7 @@
             <img src="erd-icon.png" alt="ERD measurement icon" />
           </div>
           <h4>1. ERD Effective Rim Diameter</h4>
-          <p>Measure the internal diameter of the rim from nipple bed to nipple bed.</p>
+          <p>Measure the effective rim diameter where the spoke nipples seat.</p>
         </div>
 
         <div class="measure-item">
@@ -707,7 +742,7 @@
             <img src="flange-icon.png" alt="Hub flange measurement icon" />
           </div>
           <h4>2. Hub Flange Diameter</h4>
-          <p>Measure the diameter of the hub flange where the spokes are attached.</p>
+          <p>Measure the left and right hub pitch circle diameter separately.</p>
         </div>
 
         <div class="measure-item">
@@ -715,7 +750,7 @@
             <img src="left-flange-icon.png" alt="Left flange measurement icon" />
           </div>
           <h4>3. Center to Left Flange</h4>
-          <p>Measure from the centerline of the hub to the left flange.</p>
+          <p>Measure from the hub centerline to the left flange.</p>
         </div>
 
         <div class="measure-item">
@@ -723,15 +758,15 @@
             <img src="right-flange-icon.png" alt="Right flange measurement icon" />
           </div>
           <h4>4. Center to Right Flange</h4>
-          <p>Measure from the centerline of the hub to the right flange.</p>
+          <p>Measure from the hub centerline to the right flange.</p>
         </div>
 
         <div class="measure-item">
           <div class="measure-image">
             <span style="font-size: 42px;">🔘</span>
           </div>
-          <h4>5. Spoke Hole Diameter</h4>
-          <p>Measure the diameter of the spoke hole in the rim if known.</p>
+          <h4>5. Correction Field</h4>
+          <p>Use the correction field to match special rim, nipple, or manufacturer assumptions.</p>
         </div>
       </div>
     </section>
@@ -758,65 +793,94 @@
 
       <div class="feature">
         <strong>RELIABLE</strong>
-        <p>Trusted by riders</p>
+        <p>Compare with trusted calculators</p>
       </div>
 
       <div class="feature">
         <strong>PERFORMANCE</strong>
-        <p>Built for speed</p>
+        <p>Built for wheel builders</p>
       </div>
     </div>
   </footer>
 
   <script>
-    function calculateSide(erd, flangeDiameter, centerToFlange, totalSpokes, crosses, spokeHole) {
+    function calculateSide(
+      erd,
+      flangeDiameter,
+      centerToFlange,
+      totalSpokes,
+      crosses,
+      hubSpokeHole,
+      nippleCorrection
+    ) {
       const rimRadius = erd / 2;
       const flangeRadius = flangeDiameter / 2;
       const spokesPerSide = totalSpokes / 2;
 
+      /*
+        Standard crossed wheel geometry:
+        angle = 360 degrees * crosses / spokes per side
+        in radians = 2π * crosses / spokes per side
+      */
       const angle = (2 * Math.PI * crosses) / spokesPerSide;
 
-      const length = Math.sqrt(
+      const rawLength = Math.sqrt(
         Math.pow(rimRadius, 2) +
         Math.pow(flangeRadius, 2) +
         Math.pow(centerToFlange, 2) -
         2 * rimRadius * flangeRadius * Math.cos(angle)
       );
 
-      const adjustedLength = length - spokeHole / 2;
+      /*
+        Hub spoke hole correction:
+        Many spoke calculators subtract about half the hub spoke hole diameter.
+        Nipple / ERD correction:
+        Use this field to fine-tune results when comparing with DT Swiss or rim manufacturer data.
+      */
+      const adjustedLength = rawLength - (hubSpokeHole / 2) + nippleCorrection;
+
       return adjustedLength;
     }
 
     function calculateSpokeLength() {
       const erd = parseFloat(document.getElementById("erd").value);
-      const flangeDiameter = parseFloat(document.getElementById("flangeDiameter").value);
+      const leftFlangeDiameter = parseFloat(document.getElementById("leftFlangeDiameter").value);
+      const rightFlangeDiameter = parseFloat(document.getElementById("rightFlangeDiameter").value);
       const leftCenter = parseFloat(document.getElementById("leftCenter").value);
       const rightCenter = parseFloat(document.getElementById("rightCenter").value);
       const totalSpokes = parseFloat(document.getElementById("spokes").value);
       const crosses = parseFloat(document.getElementById("crosses").value);
-      const spokeHole = parseFloat(document.getElementById("spokeHole").value);
+      const hubSpokeHole = parseFloat(document.getElementById("hubSpokeHole").value);
+      const nippleCorrection = parseFloat(document.getElementById("nippleCorrection").value);
       const warning = document.getElementById("warning");
 
       const values = [
         erd,
-        flangeDiameter,
+        leftFlangeDiameter,
+        rightFlangeDiameter,
         leftCenter,
         rightCenter,
         totalSpokes,
         crosses,
-        spokeHole
+        hubSpokeHole,
+        nippleCorrection
       ];
 
       const invalid =
-        values.some(value => isNaN(value) || value < 0) ||
+        values.some(value => isNaN(value)) ||
         erd <= 0 ||
-        flangeDiameter <= 0 ||
-        totalSpokes <= 0;
+        leftFlangeDiameter <= 0 ||
+        rightFlangeDiameter <= 0 ||
+        totalSpokes <= 0 ||
+        crosses < 0 ||
+        hubSpokeHole < 0;
 
       if (invalid) {
         warning.style.display = "block";
         document.getElementById("leftResult").textContent = "0.0";
         document.getElementById("rightResult").textContent = "0.0";
+        document.getElementById("leftRecommended").textContent = "0";
+        document.getElementById("rightRecommended").textContent = "0";
         return;
       }
 
@@ -824,37 +888,46 @@
 
       const leftLength = calculateSide(
         erd,
-        flangeDiameter,
+        leftFlangeDiameter,
         leftCenter,
         totalSpokes,
         crosses,
-        spokeHole
+        hubSpokeHole,
+        nippleCorrection
       );
 
       const rightLength = calculateSide(
         erd,
-        flangeDiameter,
+        rightFlangeDiameter,
         rightCenter,
         totalSpokes,
         crosses,
-        spokeHole
+        hubSpokeHole,
+        nippleCorrection
       );
 
       document.getElementById("leftResult").textContent = leftLength.toFixed(1);
       document.getElementById("rightResult").textContent = rightLength.toFixed(1);
+
+      document.getElementById("leftRecommended").textContent = Math.round(leftLength);
+      document.getElementById("rightRecommended").textContent = Math.round(rightLength);
     }
 
     function resetAll() {
       document.getElementById("erd").value = 0;
-      document.getElementById("flangeDiameter").value = 0;
+      document.getElementById("leftFlangeDiameter").value = 0;
+      document.getElementById("rightFlangeDiameter").value = 0;
       document.getElementById("leftCenter").value = 0;
       document.getElementById("rightCenter").value = 0;
       document.getElementById("spokes").value = 0;
       document.getElementById("crosses").value = 0;
-      document.getElementById("spokeHole").value = 0;
+      document.getElementById("hubSpokeHole").value = 0;
+      document.getElementById("nippleCorrection").value = 0;
 
       document.getElementById("leftResult").textContent = "0.0";
       document.getElementById("rightResult").textContent = "0.0";
+      document.getElementById("leftRecommended").textContent = "0";
+      document.getElementById("rightRecommended").textContent = "0";
       document.getElementById("warning").style.display = "none";
     }
 
